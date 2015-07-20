@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+TABLE.main
+	{
+		width: 80%;
+		height: 90%;
+		border-color: #339999;			
+	}
+TABLE.sub1
+	{
+		border: 2;
+		border-color: blue;
+	}
+TD.style1
+{
+	background-color: #CCAAEE;
+}
+TD.style2
+	{
+		background-color: #FFBBCC;
+	}
+TD.style3
+	{
+		background-color: #FFAA77;
+	}
