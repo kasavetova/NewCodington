@@ -32,6 +32,11 @@
 				<input type="submit" value="Submit" />
 			</div>
 		</form>
+		<div class="registration">
+			<p>Not registered.</p><br>
+			<a href="visitorRegistration.jsp">Register</a>
+		</div>
+		
 
 	</div>
 </body>
