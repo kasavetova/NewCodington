@@ -11,11 +11,11 @@
 	<div id="header">
 		<h2>Festival Registration System</h2>
 	</div>
-	<div class="nav">
-	<ul>
-	<li><a href="">Logout</a></li>
-	<li><a href="about.html">About</a></li>
-	</ul>
+	<div id="nav">
+		<ul>
+			<li><a href="">Logout</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
 	</div>
 
 	<div id="form-box">
