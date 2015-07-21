@@ -1,0 +1,25 @@
+body {
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	width: 48em;
+	margin: 0 auto;
+}
+
+#login-box-header {
+	background-color: #16a085;
+	color: white;
+	padding: 1em;
+	text-align: center;
+}
+
+#form-box {
+	text-align: center;
+}
+
+.input-field {
+	margin: 1em 0;
+}
+
+.input-field > label {
+	display: block;
+	font-weight: bold;
+}
