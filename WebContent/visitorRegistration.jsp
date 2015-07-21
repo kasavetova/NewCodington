@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to the Festival Event Registration System</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="JavaScript/validation.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -19,7 +20,7 @@
 			<p>* fields are required.</p>
 		</div>
 		
-		<form action="" method="post">
+		<form name="form" action="" method="post" onSubmit="return emptyValidation();">
 			<div class="input-field">
 				<label for="firstName">First Name: *</label> <input type="text"
 					name="firstName" value="">
@@ -29,14 +30,15 @@
 					name="lastName" value="">
 			</div>
 			<div class="input-field">
+				<label for="email">Email: *</label> <input type="text" name="email"
+					value="">
+			</div>
+			<div class="input-field">
 				<label for="username">Username: *</label> <input type="text"
 					name="username" value=""
 					>
 			</div>
-			<div class="input-field">
-				<label for="email">Email: *</label> <input type="text" name="email"
-					value="">
-			</div>
+			
 			<div class="input-field">
 				<label for="password">Password: *</label> <input type="password"
 					name="password" value="">
@@ -45,6 +47,7 @@
 				<label for="confirmPassword">Confirm Password: *</label> <input
 					type="password" name="confirmPassword" value="">
 			</div>
+			
 			<div class="input-field">
 				<label for="phoneNumber">Phone Number: *</label> <input type="text"
 					name="phoneNumber" value="">
@@ -54,8 +57,7 @@
 				<textarea rows="3" cols="20" name="comments"></textarea>
 			</div>
 			<div class=input-field>
-				<input type="button" value="Cancel"> <input type="button"
-					value="Update">
+				<input type="submit" value="Register">
 			</div>
 		</form>
 	</div>

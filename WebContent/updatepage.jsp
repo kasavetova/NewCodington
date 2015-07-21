@@ -20,7 +20,7 @@
 
 	<div id="form-box">
 		<h3>Update your Details</h3>
-		<form action="" method="post">
+		<form name="updateForm" action="" method="post">
 			<div class="input-field">
 				<label for="firstName">First Name:</label> <input type="text"
 					name="firstName" value="">
