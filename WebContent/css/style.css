@@ -23,3 +23,8 @@ body {
 	display: block;
 	font-weight: bold;
 }
+
+.warning {
+color: #9F6000;
+background-color: #FEEFB3;
+}
