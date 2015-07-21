@@ -8,36 +8,31 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div id="login-box">
 
-		<div id="login-box-header">
-			<h2>Festival Event Registration System</h2>
-		</div>
+	<div id="header">
+		<h2>Festival Event Registration System</h2>
+	</div>
 
-		<div id="form-box">
+	<div id="form-box">
 
-			<h3>Portal Login Page</h3>
+		<h3>Portal Login Page</h3>
 
-			<form method="post" action="#">
-				<div class="input-field">
-					<label for="username">Visitor Name</label> <input type="text"
-						name="username" id="username" placeholder="JohnSmith" />
-				</div>
+		<form method="post" action="#">
+			<div class="input-field">
+				<label for="username">Visitor Name</label> <input type="text"
+					name="username" id="username" placeholder="JohnSmith" />
+			</div>
 
-				<div class="input-field">
-					<label for="password">Password</label> <input type="password"
-						name="password" id="password" />
-				</div>
+			<div class="input-field">
+				<label for="password">Password</label> <input type="password"
+					name="password" id="password" />
+			</div>
 
-
-				<div class="input-field">
-					<input type="submit" value="Submit" />
-				</div>
-			</form>
-
-
-		</div>
-
+			<div class="input-field">
+				<input type="submit" value="Submit" />
+			</div>
+		</form>
+		
 	</div>
 </body>
 </html>
