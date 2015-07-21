@@ -11,43 +11,42 @@
 	<div id="header">
 		<h2>Festival Registration System</h2>
 	</div>
-	<div id="nav">
-		<ul>
-			<li><a href="">Logout</a></li>
-			<li><a href="about.html">About</a></li>
-		</ul>
-	</div>
 
 	<div id="form-box">
-		<h3>Update your Details</h3>
+		<h3>Visitor Registration</h3>
+		
+		<div class="warning">
+			<p>* fields are required.</p>
+		</div>
+		
 		<form action="" method="post">
 			<div class="input-field">
-				<label for="firstName">First Name:</label> <input type="text"
+				<label for="firstName">First Name: *</label> <input type="text"
 					name="firstName" value="">
 			</div>
 			<div class="input-field">
-				<label for="lastName">Last Name:</label> <input type="text"
+				<label for="lastName">Last Name: *</label> <input type="text"
 					name="lastName" value="">
 			</div>
 			<div class="input-field">
-				<label for="username">Username:</label> <input type="text"
-					name="username" value="<-- get value from the database-- >"
-					readonly>
+				<label for="username">Username: *</label> <input type="text"
+					name="username" value=""
+					>
 			</div>
 			<div class="input-field">
-				<label for="email">Email:</label> <input type="text" name="email"
+				<label for="email">Email: *</label> <input type="text" name="email"
 					value="">
 			</div>
 			<div class="input-field">
-				<label for="password">Password:</label> <input type="password"
+				<label for="password">Password: *</label> <input type="password"
 					name="password" value="">
 			</div>
 			<div class="input-field">
-				<label for="confirmPassword">Confirm Password:</label> <input
+				<label for="confirmPassword">Confirm Password: *</label> <input
 					type="password" name="confirmPassword" value="">
 			</div>
 			<div class="input-field">
-				<label for="phoneNumber">Phone Number:</label> <input type="text"
+				<label for="phoneNumber">Phone Number: *</label> <input type="text"
 					name="phoneNumber" value="">
 			</div>
 			<div class="input-field">
