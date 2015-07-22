@@ -20,7 +20,7 @@
 
 	<div id="form-box">
 		<h3>Update your Details</h3>
-		<form name="updateForm" action="" method="post">
+		<form name="updateForm" action="updateDetails.htm" method="post">
 			<div class="input-field">
 				<label for="firstName">First Name:</label> <input type="text"
 					name="firstName" value="">
@@ -55,7 +55,7 @@
 				<textarea rows="3" cols="20" name="comments"></textarea>
 			</div>
 			<div class=input-field>
-				<input type="button" value="Cancel"> <input type="button"
+				<input type="button" value="Cancel"> <input type="submit"
 					value="Update">
 			</div>
 		</form>
