@@ -1,18 +1,19 @@
 package com.accenture.newcodington.entity;
 
 import java.util.Date;
-/**
- * POJO class to represent EVENT domain class
- */
+
 public class Event {
 
-	// Encapsulated data fields for EVENT class 
 	private String eventName;
 	private String description;
 	private int duration;
 	private String eventType;
 	private String schedule;
 	private int ticketPrice;
+	private String name;
+	private int eventId;
+	private String place;
+	private int signupId;
 	
 	// GETTER and SETTER methods for EVENT class
 	public String getEventName() {
@@ -51,5 +52,28 @@ public class Event {
 	public void setTicketPrice(int ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
-	
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+	public int geteventId() {
+		return eventId;
+	}
+	public void seteventId(int eventId) {
+		this.eventId = eventId;
+	}
+	public String getPlace(){
+		return place;
+	}
+	public void setPlace(String place){
+		this.place = place;
+	}
+	public int getsignupId() {
+		return signupId;
+	}
+	public void setsignupId(int signupId) {
+		this.signupId = signupId;
+	}
 }
