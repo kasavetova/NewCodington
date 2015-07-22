@@ -11,18 +11,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class VisitorController {
 	
-	@RequestMapping("/register")
+	@RequestMapping("/register.htm")
 	public ModelAndView registerVisitor(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		
 		String username = request.getParameter("username");
-		String firstName = request.getParameter("first-name");
-		String lastName = request.getParameter("last-name");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
 		String address = request.getParameter("address");
-		String emailAddress = request.getParameter("email-address");
+		String emailAddress = request.getParameter("email");
 		String password = request.getParameter("password");
-		String confirmPassword = request.getParameter("confirm-password");
-		String phoneNo = request.getParameter("phone-no");		
+		String confirmPassword = request.getParameter("confirmPassword");
+		String phoneNumber = request.getParameter("phoneNumber");		
 		
 		boolean success = false;
 		String errorMessage = "";
@@ -34,6 +34,7 @@ public class VisitorController {
 		return mv;
 	}
 	
+	@RequestMapping("/login.htm")
 	public ModelAndView loginVisitor(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		

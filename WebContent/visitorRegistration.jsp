@@ -19,7 +19,7 @@
 			<p>* fields are required.</p>
 		</div>
 		
-		<form action="" method="post">
+		<form action="register.htm" method="post">
 			<div class="input-field">
 				<label for="firstName">First Name: *</label> <input type="text"
 					name="firstName" value="">
@@ -51,10 +51,10 @@
 			</div>
 			<div class="input-field">
 				<label for="comments">Address:</label>
-				<textarea rows="3" cols="20" name="comments"></textarea>
+				<textarea rows="3" cols="20" name="address"></textarea>
 			</div>
 			<div class=input-field>
-				<input type="button" value="Cancel"> <input type="button"
+				<input type="button" value="Cancel"> <input type="submit"
 					value="Update">
 			</div>
 		</form>
