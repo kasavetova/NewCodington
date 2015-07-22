@@ -53,11 +53,11 @@
 					name="phoneNumber" value="">
 			</div>
 			<div class="input-field">
-				<label for="comments">Address:</label>
-				<textarea rows="3" cols="20" name="address"></textarea>
+				<label for="address">Address:</label>
+				<textarea rows="3" cols="20" name="address" id="address"></textarea>
 			</div>
 			<div class=input-field>
-				<input type="button" value="Cancel"> 
+				<a id="cancel_button" href="login.jsp">Cancel</a> 
 				<input type="submit" value="Register">
 			</div>
 		</form>

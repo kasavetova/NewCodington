@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to the Festival Event Registration System</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="JavaScript/loginValidation.js"></script>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
 
 		<h3>Portal Login Page</h3>
 
-		<form method="post" action="login.htm">
+		<form name="form" method="post" action="login.htm" >
 			<div class="input-field">
 				<label for="username">Visitor Name</label> <input type="text"
 					name="username" id="username" placeholder="JohnSmith" />
@@ -29,7 +30,7 @@
 			</div>
 
 			<div class="input-field">
-				<input type="submit" value="Submit" />
+				<input type="submit" value="Submit" onClick="return loginValidation();"/>
 			</div>
 		</form>
 		<div class="registration">

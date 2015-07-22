@@ -49,7 +49,7 @@ public class VisitorController {
 		
 		mv.addObject("STATUS", success);
 		mv.addObject("ERRORMESSAGE", errorMessage);
-		mv.setViewName("view");		
+		mv.setViewName("festival-portal.jsp");		
 		return mv;
 	}
 
