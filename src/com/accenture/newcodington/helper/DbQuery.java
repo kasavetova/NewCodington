@@ -2,123 +2,18 @@ package com.accenture.newcodington.helper;
 
 public class DbQuery {
 	// SQL queries for EVENTDAO
-	private String searchEvent = "";
-	private String updateEvent = "";
-	private String checkEvent = "";
-	private String updateDeleteEvent = "";
+	public static String searchEvent = "";
+	public static String updateEvent = "";
+	public static String viewEvent = "";
+	public static String deleteEvent = "";
 	// SQL queries for VISITORDAO
-	private String insertQuery = "";
-	private String searchQuery = "";
-	private String registerQuery = "";
-	private String statusQuery = " ";
-	private String updateQuery = "";
-	private String deleteEventQuery = "";
-	private String validateVisitor = "";
-	private String changePWDQuery = "";
-	private String verifyPWDQuery = "";	
-
-	public String getSearchEvent() {
-		return searchEvent;
-	}
-
-	public void setSearchEvent(String searchEvent) {
-		this.searchEvent = searchEvent;
-	}
-
-	public String getUpdateEvent() {
-		return updateEvent;
-	}
-
-	public void setUpdateEvent(String updateEvent) {
-		this.updateEvent = updateEvent;
-	}
-
-	public String getCheckEvent() {
-		return checkEvent;
-	}
-
-	public void setCheckEvent(String checkEvent) {
-		this.checkEvent = checkEvent;
-	}
-
-	public String getUpdateDeleteEvent() {
-		return updateDeleteEvent;
-	}
-
-	public void setUpdateDeleteEvent(String updateDeleteEvent) {
-		this.updateDeleteEvent = updateDeleteEvent;
-	}
-
-	public String getInsertQuery() {
-		return insertQuery;
-	}
-
-	public void setInsertQuery(String insertQuery) {
-		this.insertQuery = insertQuery;
-	}
-
-	public String getSearchQuery() {
-		return searchQuery;
-	}
-
-	public void setSearchQuery(String searchQuery) {
-		this.searchQuery = searchQuery;
-	}
-
-	public String getRegisterQuery() {
-		return registerQuery;
-	}
-
-	public void setRegisterQuery(String registerQuery) {
-		this.registerQuery = registerQuery;
-	}
-
-	public String getStatusQuery() {
-		return statusQuery;
-	}
-
-	public void setStatusQuery(String statusQuery) {
-		this.statusQuery = statusQuery;
-	}
-
-	public String getUpdateQuery() {
-		return updateQuery;
-	}
-
-	public void setUpdateQuery(String updateQuery) {
-		this.updateQuery = updateQuery;
-	}
-
-	public String getDeleteEventQuery() {
-		return deleteEventQuery;
-	}
-
-	public void setDeleteEventQuery(String deleteEventQuery) {
-		this.deleteEventQuery = deleteEventQuery;
-	}
-
-	public String getValidateVisitor() {
-		return validateVisitor;
-	}
-
-	public void setValidateVisitor(String validateVisitor) {
-		this.validateVisitor = validateVisitor;
-	}
-	
-	public String getChangePWDQuery() {
-		return changePWDQuery;
-	}
-
-	public void setChangePWDQuery(String changePWDQuery) {
-		this.changePWDQuery = changePWDQuery;
-	}
-	
-	public String getVerifyPWDQuery() {
-		return verifyPWDQuery;
-	}
-
-	public void setVerifyPWDQuery(String verifyPWDQuery) {
-		this.verifyPWDQuery = verifyPWDQuery;
-	}
-
+	public static String insertData = "INSERT INTO visitor VALUES(?, ?, ?, ?, ?, ?, ?)";
+	public static String searchUser = "SELECT * FROM visitor WHERE username = ? AND password = ?";	
+	public static String registerVisitorToEvent = "INSERT INTO eventsignup VALUES(?, ?)";
+	public static String registeredEvents = "SELECT * FROM event e JOIN eventsignup es ON e.eventid = es.eventid WHERE es.visitorid = ?";
+	public static String updateVisitor = "UPDATE visitor SET firstname = ?, lastname = ?, email = ?, phonenumber = ?, address = ? WHERE username = ?";
+	public static String changePassword = "UPDATE visitor SET password = ? WHERE username = ?";
+	public static String matchWithOldPwd = "SELECT * FROM visitor WHERE username = ? AND password = ?";
+	public static String unregisterEvent = "DELETE FROM eventsignup WHERE visitorid = ? AND eventid = ?";	
+	public static String getIDByUsername = "SELECT * FROM visitor WHERE username = ?";
 }
