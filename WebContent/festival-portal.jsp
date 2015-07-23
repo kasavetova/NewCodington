@@ -20,22 +20,91 @@
 			<li><a href="">About</a></li>
 		</ul>
 	</div>
+	
+	<%
+		Visitor v = (Visitor) request.getAttribute("DATA");
+	%>
 
-	<h2 id="sub-heading">Festival Portal Page: Welcome @user to your
+	<h2 id="sub-heading">Festival Portal Page: Welcome <%= v.getFirstName() %> to your
 		portal page.</h2>
-		
-	<% Visitor v = (Visitor) request.getAttribute("DATA"); %>
 
 	<div id="user-info">
 		<p>
 			Your personal information is below. To change your information, <a
 				href="updatePage.htm">click here</a>
 		</p>
-		<p>Username: <%= v.getUserName() %></p>
-		<p>Visitor ID: <%= v.getVisitorId() %></p>
-		<p>Email: <%= v.getEmail() %></p>
-		<p>Phone No: <%= v.getPhoneNumber() %></p>
-		<p>Address: <%= v.getAddress() %></p>
+		<p>
+			Username:
+			<%=v.getUserName()%></p>
+		<p>
+			Visitor ID:
+			<%=v.getVisitorId()%></p>
+		<p>
+			Email:
+			<%=v.getEmail()%></p>
+		<p>
+			Phone No:
+			<%=v.getPhoneNumber()%></p>
+			
+			<% if(v.getAddress() == null) {
+				v.setAddress("Not specified");
+			} %>
+			
+		<p>
+			Address:
+			<%=v.getAddress()%></p>
+	</div>
+
+	<hr />
+
+	<div id="registered-events">
+		<table>
+			<tr>
+				<th>Confirmation #</th>
+				<th>Event ID</th>
+				<th>Event Name</th>
+				<th>Description</th>
+				<th>Places</th>
+				<th>Duration</th>
+				<th>Event Type</th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+
+	<hr />
+
+	<div id="available-events">
+		<table>
+			<tr>
+				<th>Event ID</th>
+				<th>Event Name</th>
+				<th>Description</th>
+				<th>Places</th>
+				<th>Duration</th>
+				<th>Event Type</th>
+				<th>Available Tickets</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
 	</div>
 
 
