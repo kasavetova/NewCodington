@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.accenture.newcodington.dao.EventsDAO;
+import com.accenture.newcodington.dao.VisitorDAO;
 import com.accenture.newcodington.entity.Event;
+import com.accenture.newcodington.entity.Visitor;
 
 
 /**
@@ -78,5 +80,21 @@ public class EventServiceImpl implements EventFacade {
 			System.out.println(exception.getMessage());
 		}
 		return showStadiumEvents;
+	}
+	
+	public boolean checkEventsForVisitor(Visitor visitor, int eventid) {
+		VisitorDAO dao = new VisitorDAO();
+		boolean isRegistered = false;
+		try {
+			isRegistered = dao.checkReisteredEvents(visitor, eventid);
+		} catch (ClassNotFoundException exception) {
+			System.out.println(exception.getMessage());
+		} catch (SQLException exception) {
+			System.out.println(exception.getMessage());
+		} catch (Exception e) {		
+			e.printStackTrace();
+		}
+		
+		return isRegistered;
 	}
 }
