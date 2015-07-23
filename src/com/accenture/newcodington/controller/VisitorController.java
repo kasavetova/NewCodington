@@ -45,10 +45,13 @@ public class VisitorController {
 		if (isRegistered!=null) {
 			success = true;
 			mv.addObject("DATA", "Successful registration!");
+			mv.setViewName("login.jsp");
+		} else {
+			mv.setViewName("visitorRegistration.jsp");
 		}
 		mv.addObject("STATUS", success);
 		mv.addObject("ERRORMESSAGE", errorMessage);
-		mv.setViewName("login.jsp");
+		
 
 		return mv;
 	}
@@ -70,13 +73,15 @@ public class VisitorController {
 		Visitor returnedVisitor = (Visitor) service.searchVisitor(username, password);
 		String errorMessage = "";
 		boolean success = false;
-		if (returnedVisitor!=null) {
+		if (returnedVisitor!=null && returnedVisitor.getUserName()!=null && returnedVisitor.getUserName().length() >0) {
 			success = true;
 			mv.addObject("DATA", returnedVisitor);
+			mv.setViewName("festival-portal.jsp");
+		} else {
+			mv.setViewName("login.jsp");
 		}
-		mv.addObject("STATUS", visitor);
+		mv.addObject("STATUS", success);
 		mv.addObject("ERRORMESSAGE", errorMessage);
-		mv.setViewName("festival-portal.jsp");
 		System.out.println(returnedVisitor.getFirstName() + ", "  + returnedVisitor.getLastName());
 		return mv;
 	}
@@ -104,13 +109,15 @@ public class VisitorController {
 		Visitor updatedVisitor = service.updateVisitorDetails(visitor);
 		boolean success = false;
 		String errorMessage = "";
-		if (updatedVisitor!=null) {
+		if (updatedVisitor!=null&& updatedVisitor.getUserName()!=null && updatedVisitor.getUserName().length()>0) {
 			success = true;
 			mv.addObject("DATA", updatedVisitor);
+			mv.setViewName("festival-portal.jsp");	
+		} else {
+			mv.setViewName("updatepage.jsp");
 		}
 		mv.addObject("STATUS", success);
 		mv.addObject("ERRORMESSAGE", errorMessage);
-		mv.setViewName("festival-portal.jsp");
 		System.out.println(updatedVisitor.getFirstName() + ", "  + updatedVisitor.getLastName());
 		return mv;
 	}
