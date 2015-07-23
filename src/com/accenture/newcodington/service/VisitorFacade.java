@@ -14,5 +14,5 @@ public interface VisitorFacade {
 	public Visitor searchVisitor(String username, String password);
 	public Object registerVisitorForEvent(Visitor v, int eventID);
 	public ArrayList<Event> showRegisteredEvents(Visitor v);
-	public Visitor updateVisitorDetails(String username);
+	public Visitor updateVisitorDetails(Visitor v);
 }

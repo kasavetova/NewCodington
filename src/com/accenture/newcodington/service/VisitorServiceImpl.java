@@ -85,13 +85,11 @@ public class VisitorServiceImpl implements VisitorFacade {
 	}
 	
 	@Override
-	public Visitor updateVisitorDetails(String username) {
+	public Visitor updateVisitorDetails(Visitor v) {
 		VisitorDAO visitorDAO = new VisitorDAO();
-		Visitor visitor = new Visitor();
-		visitor.setUserName(username);
 		EventsDAO eventDAO = new EventsDAO();
 		try {
-			visitorDAO.updateVisitor(visitor);
+			Visitor visitor = visitorDAO.updateVisitor(v);
 			return visitor;
 		} catch (SQLException e) {
 			log.info("Exception is: " + e.getMessage());

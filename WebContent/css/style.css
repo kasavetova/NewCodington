@@ -19,7 +19,7 @@ body {
 	margin: 1em 0;
 }
 
-.input-field > label {
+.input-field>label {
 	display: block;
 	font-weight: bold;
 }
@@ -53,9 +53,19 @@ body {
 	padding: 1em;
 }
 
+<<<<<<< HEAD
 #cancel_button {
 	background-color: #ccc;
 	padding: 0.5em 1em;
 	text-decoration: none;
 	font-size: 80%;
+=======
+table,tr,th,td {
+	border: 1px solid;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+>>>>>>> fc2aa71ae476a049ee37c3e60611af9e83bceccb
 }

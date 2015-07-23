@@ -10,17 +10,18 @@
 	<bean id="SqlBean" class="com.accenture.newcodington.helper.DbQuery">
 		<property name="searchEvent" value="SELECT * FROM EVENT"></property>
 		<property name="updateEvent" value="UPDATE EVENT SET SEATSAVAILABLE = SEATSAVAILABLE - 1 WHERE EVENTID=?"></property>
-		<property name="checkEvent" value="SELECT COUNT(*) AS EVENTCOUNT FROM EVENTSIGNUP WHERE EVENTID=? AND VISITORID=?"></property>
-		<property name="updateDeleteEvent" value="UPDATE EVENT SET SEATSAVAILABLE = SEATSAVAILABLE + 1 WHERE EVENTID=?"></property>
-		<property name="insertQuery" value="INSERT INTO VISITOR(USERNAME,PASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUMBER,ADDRESS) VALUES(?,?,?,?,?,?,?)"></property>
-		<property name="searchQuery" value="SELECT * FROM VISITOR WHERE USERNAME=? AND PASSWORD=?"></property>
-		<property name="registerQuery" value="INSERT INTO EVENTSIGNUP(EVENTID,VISITORID) VALUES(?,?)"></property>
-		<property name="statusQuery" value="SELECT E1.EVENTID, E1.NAME, E1.DESCRIPTION, E1.PLACES, E1.DURATION, E1.EVENTTYPE , E2.SIGNUPID FROM EVENT E1, EVENTSIGNUP E2 WHERE E1.EVENTID = E2.EVENTID AND E2.VISITORID = ? ORDER BY E2.SIGNUPID DESC"></property>
-		<property name="updateQuery" value="UPDATE VISITOR SET FIRSTNAME=?, LASTNAME=?, USERNAME=?, EMAIL=?, PHONENUMBER=?, ADDRESS=? WHERE VISITORID=?"></property>
-		<property name="deleteEventQuery" value="DELETE FROM EVENTSIGNUP WHERE EVENTID = ? AND VISITORID = ?"></property>
-		<property name="validateVisitor" value="SELECT USERNAME FROM VISITOR"></property>
-		<property name="changePWDQuery" value="UPDATE VISITOR SET PASSWORD=? WHERE VISITORID=?"></property>
-		<property name="verifyPWDQuery" value="SELECT PASSWORD FROM VISITOR WHERE VISITORID=?"></property>
+		<property name="viewEvent" value="SELECT COUNT(*) AS EVENTCOUNT FROM EVENTSIGNUP WHERE EVENTID=? AND VISITORID=?"></property>
+		<property name="deleteEvent" value="UPDATE EVENT SET SEATSAVAILABLE = SEATSAVAILABLE + 1 WHERE EVENTID=?"></property>
+		<property name="insertData" value="INSERT INTO visitor(username, password, firstname, lastname, email, phonenumber, address) VALUES(?, ?, ?, ?, ?, ?, ?)"></property>
+		<property name="searchUser" value="SELECT * FROM visitor WHERE username = ? AND password = ?"></property>
+		<property name="registerVisitorToEvent" value="INSERT INTO eventsignup VALUES(?, ?)"></property>
+		<property name="registeredEvents" value="SELECT * FROM event e JOIN eventsignup es ON e.eventid = es.eventid WHERE es.visitorid = ?"></property>
+		<property name="updateVisitor" value="UPDATE visitor SET firstname = ?, lastname = ?, email = ?, phonenumber = ?, address = ? WHERE username = ?"></property>
+		<property name="changePassword" value="UPDATE visitor SET password = ? WHERE username = ?"></property>
+		<property name="matchWithOldPwd" value="SELECT * FROM visitor WHERE username = ? AND password = ?"></property>
+		<property name="unregisterEvent" value="DELETE FROM eventsignup WHERE visitorid = ? AND eventid = ?"></property>
+		<property name="getIDByUsername" value="SELECT * FROM visitor WHERE username = ?"></property>		
+		<property name="checkUserRegistered" value="SELECT * FROM eventsignup WHERE visitorid = ? AND eventid = ?"></property>
 	</bean>	
 	
 </beans>
