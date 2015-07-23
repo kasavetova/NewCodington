@@ -86,8 +86,22 @@ public class VisitorController {
 		ModelAndView mv = new ModelAndView();
 
 		String username = request.getParameter("username");
+		String firstname = request.getParameter("firstName");
+		String lastname = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		String address = request.getParameter("address");
+		String password = request.getParameter("password");
+		String phonenumber = request.getParameter("phoneNumber");
+		
 		VisitorFacade service = new VisitorServiceImpl();
-		Visitor updatedVisitor = (Visitor) service.updateVisitorDetails(username);
+		Visitor visitor = new Visitor();
+		visitor.setAddress(address);
+		visitor.setFirstName(firstname);
+		visitor.setLastName(lastname);
+		visitor.setEmail(email);
+		visitor.setPhoneNumber(phonenumber);
+		visitor.setUserName(username);
+		Visitor updatedVisitor = service.updateVisitorDetails(visitor);
 		boolean success = false;
 		String errorMessage = "";
 		if (updatedVisitor!=null) {

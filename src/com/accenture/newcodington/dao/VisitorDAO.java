@@ -151,7 +151,7 @@ public class VisitorDAO {
 		return eventList;
 	}
 
-	public boolean updateVisitor(Visitor visitor)
+	public Visitor updateVisitor(Visitor visitor)
 			throws ClassNotFoundException, SQLException {
 		connection = CodingtonConnectToDB.createConnection();		
 		statement = connection.prepareStatement(query.getUpdateVisitor());						
@@ -161,17 +161,28 @@ public class VisitorDAO {
 		statement.setString(4, visitor.getPhoneNumber());
 		statement.setString(5, visitor.getAddress());
 		statement.setString(6, visitor.getUserName());
-		int status = statement.executeUpdate();
-		CodingtonConnectToDB.closeConnection();
+		int status = statement.executeUpdate();		
 
 		if (status != 1) {
 			log.info("Failed to update visitor details in Database for Visitor ID :"
 					+ visitor.getVisitorId());
-			return false;
-		} else {
+			CodingtonConnectToDB.closeConnection();
+			return null;
+		} else {			
+			statement=connection.prepareStatement(query.getGetIDByUsername());
+			statement.setString(1, visitor.getUserName());
+			resultSet = statement.executeQuery();
+			if(!resultSet.next()) return null;		
+			visitor.setFirstName(resultSet.getString(4));
+			visitor.setLastName(resultSet.getString(5));
+			visitor.setEmail(resultSet.getString(6));
+			visitor.setPhoneNumber(resultSet.getString(7));
+			visitor.setAddress(resultSet.getString(8));
+			
 			log.info("Updated visitor details in Database for Visitor ID :"
 					+ visitor.getVisitorId());
-			return true;
+			CodingtonConnectToDB.closeConnection();
+			return visitor;
 		}
 	}
 
