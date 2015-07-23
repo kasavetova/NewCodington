@@ -77,6 +77,7 @@ public class VisitorController {
 		mv.addObject("STATUS", visitor);
 		mv.addObject("ERRORMESSAGE", errorMessage);
 		mv.setViewName("festival-portal.jsp");
+		System.out.println(returnedVisitor.getFirstName() + ", "  + returnedVisitor.getLastName());
 		return mv;
 	}
 	@RequestMapping("/updateDetails.htm")
@@ -96,6 +97,7 @@ public class VisitorController {
 		mv.addObject("STATUS", success);
 		mv.addObject("ERRORMESSAGE", errorMessage);
 		mv.setViewName("festival-portal.jsp");
+		System.out.println(updatedVisitor.getFirstName() + ", "  + updatedVisitor.getLastName());
 		return mv;
 	}
 }

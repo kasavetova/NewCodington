@@ -36,7 +36,7 @@ public class VisitorDAO {
 	public boolean insertData(Visitor visitor) throws ClassNotFoundException,
 			SQLException, Exception {
 		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(query.insertData);
+		statement = connection.prepareStatement(query.getInsertData());
 		statement.setString(1, visitor.getUserName());
 		statement.setString(2, visitor.getPassword());
 		statement.setString(3, visitor.getFirstName());
@@ -62,7 +62,7 @@ public class VisitorDAO {
 			throws ClassNotFoundException, SQLException {
 		connection = CodingtonConnectToDB.createConnection();
 		Visitor visitor = new Visitor();
-		statement = connection.prepareStatement(query.searchUser);
+		statement = connection.prepareStatement(query.getSearchUser());
 		statement.setString(1, username);
 		statement.setString(2, password);
 		resultSet = statement.executeQuery();
@@ -93,13 +93,13 @@ public class VisitorDAO {
 		connection = CodingtonConnectToDB.createConnection();
 		log.info("Mapping event with ID :" + eventid + " to visitor :"
 				+ visitor.getUserName() + " in Database");
-		statement=connection.prepareStatement(query.getIDByUsername);
+		statement=connection.prepareStatement(query.getGetIDByUsername());
 		statement.setString(1, visitor.getUserName());
 		resultSet = statement.executeQuery();
 		if(!resultSet.next()) return false;
 		
 		int id = resultSet.getInt(1);		 
-		statement = connection.prepareStatement(query.registerVisitorToEvent);
+		statement = connection.prepareStatement(query.getRegisterVisitorToEvent());
 		statement.setInt(1, eventid);
 		statement.setInt(2, id);
 		int status = statement.executeUpdate();
@@ -120,13 +120,13 @@ public class VisitorDAO {
 			throws ClassNotFoundException, SQLException {
 		connection = CodingtonConnectToDB.createConnection();
 		
-		statement=connection.prepareStatement(query.getIDByUsername);
+		statement=connection.prepareStatement(query.getGetIDByUsername());
 		statement.setString(1, visitor.getUserName());
 		resultSet = statement.executeQuery();
 		if(!resultSet.next()) return null;		
 		int id = resultSet.getInt(1);		
 		
-		statement = connection.prepareStatement(query.registeredEvents);
+		statement = connection.prepareStatement(query.getRegisteredEvents());
 		statement.setInt(1, id);
 		resultSet = statement.executeQuery();
 		ArrayList<Event> eventList = new ArrayList<Event>();
@@ -154,7 +154,7 @@ public class VisitorDAO {
 	public boolean updateVisitor(Visitor visitor)
 			throws ClassNotFoundException, SQLException {
 		connection = CodingtonConnectToDB.createConnection();		
-		statement = connection.prepareStatement(query.updateVisitor);						
+		statement = connection.prepareStatement(query.getUpdateVisitor());						
 		statement.setString(1, visitor.getFirstName());
 		statement.setString(2, visitor.getLastName());				
 		statement.setString(3, visitor.getEmail());
@@ -184,7 +184,7 @@ public class VisitorDAO {
 					+ " as new password matches current.");
 			return false;
 		} else {
-			statement = connection.prepareStatement(query.changePassword);
+			statement = connection.prepareStatement(query.getChangePassword());
 			statement.setString(1, visitor.getPassword());
 			statement.setString(2, visitor.getUserName());
 
@@ -209,7 +209,7 @@ public class VisitorDAO {
 		String currentPWD = "";
 
 		try {
-			statement = connection.prepareStatement(query.matchWithOldPwd);
+			statement = connection.prepareStatement(query.getMatchWithOldPwd());
 			statement.setString(1, visitor.getUserName());
 			statement.setString(2, visitor.getPassword());
 
@@ -233,13 +233,13 @@ public class VisitorDAO {
 			throws ClassNotFoundException, SQLException, Exception {
 
 		connection = CodingtonConnectToDB.createConnection();				
-		statement=connection.prepareStatement(query.getIDByUsername);
+		statement=connection.prepareStatement(query.getGetIDByUsername());
 		statement.setString(1, visitor.getUserName());
 		resultSet = statement.executeQuery();
 		if(!resultSet.next()) return false;		
 		int id = resultSet.getInt(1);		
 		
-		statement = connection.prepareStatement(query.unregisterEvent);		
+		statement = connection.prepareStatement(query.getUnregisterEvent());		
 		statement.setInt(1, id);
 		statement.setInt(2, eventid);
 		int status = statement.executeUpdate();
