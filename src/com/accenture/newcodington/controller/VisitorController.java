@@ -16,6 +16,7 @@ import com.accenture.newcodington.service.VisitorServiceImpl;
 @Controller
 public class VisitorController {
 
+	private Visitor logedInVisitor;
 	@RequestMapping("/register.htm")
 	public ModelAndView registerVisitor(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -53,9 +54,26 @@ public class VisitorController {
 		return mv;
 	}
 
-	@RequestMapping("/login.htm")
-	public ModelAndView loginVisitor(HttpServletRequest request,
+	@RequestMapping("/updatePage.htm")
+	public ModelAndView loginToUpdatePageVisitor(HttpServletRequest request,
 			HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("DATA", logedInVisitor);
+		mv.setViewName("updatepage.jsp");	
+		return mv;
+	}
+	
+	@RequestMapping("/cancelUpdatePage.htm")
+	public ModelAndView cancelUpdatePageVisitor(HttpServletRequest request,
+			HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("DATA", logedInVisitor);
+		mv.setViewName("festival-portal.jsp");	
+		return mv;
+	}
+	
+	@RequestMapping("/login.htm")
+	public ModelAndView loginVisitor(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 
 		String username = request.getParameter("username");
@@ -72,6 +90,7 @@ public class VisitorController {
 		boolean success = false;
 		if (returnedVisitor!=null) {
 			success = true;
+			logedInVisitor = returnedVisitor;
 			mv.addObject("DATA", returnedVisitor);
 		}
 		mv.addObject("STATUS", visitor);

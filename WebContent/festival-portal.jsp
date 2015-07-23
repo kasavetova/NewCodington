@@ -29,7 +29,7 @@
 	<div id="user-info">
 		<p>
 			Your personal information is below. To change your information, <a
-				href="updatepage.jsp">click here</a>
+				href="updatePage.htm">click here</a>
 		</p>
 		<p>Username: <%= v.getUserName() %></p>
 		<p>Visitor ID: <%= v.getVisitorId() %></p>

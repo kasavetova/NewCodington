@@ -1,3 +1,4 @@
+<%@page import="com.accenture.newcodington.entity.Visitor"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to the Festival Event Registration System</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="JavaScript/updateValidation.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -17,10 +19,10 @@
 			<li><a href="about.html">About</a></li>
 		</ul>
 	</div>
-
+	<% Visitor v = (Visitor)request.getAttribute("DATA"); %>
 	<div id="form-box">
 		<h3>Update your Details</h3>
-		<form name="updateForm" action="updateDetails.htm" method="post">
+		<form name="updateForm" action="updateDetails.htm" method="post" onSubmit="return updateValidation();">
 			<div class="input-field">
 				<label for="firstName">First Name:</label> <input type="text"
 					name="firstName" value="">
@@ -31,7 +33,7 @@
 			</div>
 			<div class="input-field">
 				<label for="username">Username:</label> <input type="text"
-					name="username" value="<-- get value from the database-- >"
+					name="username" value="<%= v.getUserName()%>"
 					readonly>
 			</div>
 			<div class="input-field">
@@ -40,11 +42,11 @@
 			</div>
 			<div class="input-field">
 				<label for="password">Password:</label> <input type="password"
-					name="password" value="">
+					name="password" value="" readonly>
 			</div>
 			<div class="input-field">
 				<label for="confirmPassword">Confirm Password:</label> <input
-					type="password" name="confirmPassword" value="">
+					type="password" name="confirmPassword" value="" readonly>
 			</div>
 			<div class="input-field">
 				<label for="phoneNumber">Phone Number:</label> <input type="text"
@@ -55,7 +57,7 @@
 				<textarea rows="3" cols="20" name="address"></textarea>
 			</div>
 			<div class=input-field>
-				<input type="button" value="Cancel"> <input type="submit"
+				<a id="cancel_button" href="cancelUpdatePage.htm">Cancel</a>  <input type="submit"
 					value="Update">
 			</div>
 		</form>

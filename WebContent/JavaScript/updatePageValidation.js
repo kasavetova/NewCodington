@@ -28,18 +28,18 @@ function updateValidation() {
 
 	}
 
-	var passwordPattern = /^([a-zA-Z0-9]).{5,15}$/;
-	if (document.form.password.value.match(passwordPattern)) {
-		if (document.form.password.value != document.form.confirmPassword.value) {
-			error = error + "passwords do not match,";
-			valid = false;
-		}
-
-	} else {
-		error = error + "password does not match the standards,";
-		valid = false;
-
-	}
+//	var passwordPattern = /^([a-zA-Z0-9]).{5,15}$/;
+//	if (document.form.password.value.match(passwordPattern)) {
+//		if (document.form.password.value != document.form.confirmPassword.value) {
+//			error = error + "passwords do not match,";
+//			valid = false;
+//		}
+//
+//	} else {
+//		error = error + "password does not match the standards,";
+//		valid = false;
+//
+//	}
 	var numberPattern = /^([0-9]).{9,20}$/;
 	if (!document.form.phoneNumber.value.match(numberPattern)) {
 			error = error + "Phone number is invalid";
