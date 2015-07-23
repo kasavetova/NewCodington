@@ -72,7 +72,6 @@ public class VisitorController {
 	public ModelAndView loginToUpdatePageVisitor(HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-<<<<<<< HEAD
 		mv.addObject("DATA", logedInVisitor);
 		mv.setViewName("updatepage.jsp");	
 		return mv;
@@ -90,11 +89,8 @@ public class VisitorController {
 	@RequestMapping("/login.htm")
 	public ModelAndView loginVisitor(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-=======
 		String errorMessage = "";
 		boolean success = false;
->>>>>>> 24315d16318179142bb31351e64d8ddc579bb3ea
-
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		if (username == null || username.length() < 1 || password == null
@@ -125,12 +121,8 @@ public class VisitorController {
 		} else {
 			mv.setViewName("login.jsp");
 		}
-<<<<<<< HEAD
-		mv.addObject("STATUS", visitor);
-		
-=======
+
 		mv.addObject("STATUS", success);
->>>>>>> 24315d16318179142bb31351e64d8ddc579bb3ea
 		mv.addObject("ERRORMESSAGE", errorMessage);
 		System.out.println(returnedVisitor.getFirstName() + ", "
 				+ returnedVisitor.getLastName());
@@ -181,12 +173,7 @@ public class VisitorController {
 		}
 		mv.addObject("STATUS", success);
 		mv.addObject("ERRORMESSAGE", errorMessage);
-<<<<<<< HEAD
 		mv.setViewName("festival-portal.jsp");		
-
-		System.out.println(updatedVisitor.getFirstName() + ", "  + updatedVisitor.getLastName());
-
-=======
 		System.out.println(updatedVisitor.getFirstName() + ", "
 				+ updatedVisitor.getLastName());
 		return mv;
@@ -220,7 +207,6 @@ public class VisitorController {
 		mv.setViewName("festival-portal.jsp");
 		mv.addObject("STATUS", isRegistered);
 		System.out.println(isRegistered + ", ");
->>>>>>> 24315d16318179142bb31351e64d8ddc579bb3ea
 		return mv;
 	}
 }
