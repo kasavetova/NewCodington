@@ -73,13 +73,13 @@ public class VisitorDAO {
 			log.info("Retreived Visitor details from DATABASE for username :"
 					+ username);
 
-			visitor.setUserName(resultSet.getString("username"));
-			visitor.setVisitorId(resultSet.getInt("visitorid"));
-			visitor.setFirstName(resultSet.getString("firstname"));
-			visitor.setLastName(resultSet.getString("lastname"));
-			visitor.setEmail(resultSet.getString("email"));
-			visitor.setPhoneNumber(resultSet.getString("phonenumber"));
-			visitor.setAddress(resultSet.getString("address"));
+			visitor.setUserName(resultSet.getString(2));
+			visitor.setVisitorId(resultSet.getInt(1));
+			visitor.setFirstName(resultSet.getString(4));
+			visitor.setLastName(resultSet.getString(5));
+			visitor.setEmail(resultSet.getString(6));
+			visitor.setPhoneNumber(resultSet.getString(7));
+			visitor.setAddress(resultSet.getString(8));
 		}
 
 		resultSet.close();
