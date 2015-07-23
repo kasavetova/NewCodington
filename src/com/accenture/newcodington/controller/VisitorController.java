@@ -20,8 +20,18 @@ public class VisitorController {
 	public ModelAndView registerVisitor(HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
+		boolean success = false;
+		String errorMessage = "";
 
 		String username = request.getParameter("username");
+		if(username== null || username.length()<1) {
+			mv.setViewName("visitorRegistration.jsp");
+			success = false;
+			mv.addObject("STATUS", success);
+			errorMessage = "An empty username has been entered.";
+			mv.addObject("ERRORMESSAGE", errorMessage);			
+			return mv;			
+		}
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String address = request.getParameter("address");
@@ -39,9 +49,7 @@ public class VisitorController {
 		visitor.setPhoneNumber(phoneNumber);
 		VisitorFacade service = new VisitorServiceImpl();
 		Boolean isRegistered = (Boolean) service.createVisitor(visitor);
-
-		String errorMessage = "";
-		boolean success = false;
+			
 		if (isRegistered!=null) {
 			success = true;
 			mv.addObject("DATA", "Successful registration!");
@@ -60,10 +68,20 @@ public class VisitorController {
 	public ModelAndView loginVisitor(HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-
+		String errorMessage = "";
+		boolean success = false;
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		if(username== null || username.length()<1 || password == null || password.length() < 1) {
+			mv.setViewName("login.jsp");
+			success = false;
+			mv.addObject("STATUS", success);
+			errorMessage = "An empty username or password has been entered.";
+			mv.addObject("ERRORMESSAGE", errorMessage);
+			return mv;
+		}
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("USERNAME", username);
 		Visitor visitor = new Visitor();
@@ -71,8 +89,7 @@ public class VisitorController {
 		visitor.setPassword(password);
 		VisitorFacade service = new VisitorServiceImpl();
 		Visitor returnedVisitor = (Visitor) service.searchVisitor(username, password);
-		String errorMessage = "";
-		boolean success = false;
+		
 		if (returnedVisitor!=null && returnedVisitor.getUserName()!=null && returnedVisitor.getUserName().length() >0) {
 			success = true;
 			mv.addObject("DATA", returnedVisitor);
@@ -89,13 +106,24 @@ public class VisitorController {
 	public ModelAndView updateVisitor(HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-
+		boolean success = false;
+		String errorMessage = "";
+		
 		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		if(username== null || username.length()<1 || password == null || password.length() < 1) {
+			mv.setViewName("updatepage.jsp");
+			success = false;
+			mv.addObject("STATUS", success);
+			errorMessage = "An empty username or password has been entered.";
+			mv.addObject("ERRORMESSAGE", errorMessage);
+			return mv;
+		}
+		
 		String firstname = request.getParameter("firstName");
 		String lastname = request.getParameter("lastName");
 		String email = request.getParameter("email");
-		String address = request.getParameter("address");
-		String password = request.getParameter("password");
+		String address = request.getParameter("address");		
 		String phonenumber = request.getParameter("phoneNumber");
 		
 		VisitorFacade service = new VisitorServiceImpl();
@@ -106,9 +134,7 @@ public class VisitorController {
 		visitor.setEmail(email);
 		visitor.setPhoneNumber(phonenumber);
 		visitor.setUserName(username);
-		Visitor updatedVisitor = service.updateVisitorDetails(visitor);
-		boolean success = false;
-		String errorMessage = "";
+		Visitor updatedVisitor = service.updateVisitorDetails(visitor);		
 		if (updatedVisitor!=null&& updatedVisitor.getUserName()!=null && updatedVisitor.getUserName().length()>0) {
 			success = true;
 			mv.addObject("DATA", updatedVisitor);
