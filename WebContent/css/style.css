@@ -19,7 +19,7 @@ body {
 	margin: 1em 0;
 }
 
-.input-field > label {
+.input-field>label {
 	display: block;
 	font-weight: bold;
 }
@@ -51,4 +51,13 @@ body {
 #user-info {
 	border: 1px solid #ccc;
 	padding: 1em;
+}
+
+table,tr,th,td {
+	border: 1px solid;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
 }
