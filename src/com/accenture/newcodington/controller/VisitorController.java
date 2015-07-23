@@ -75,8 +75,10 @@ public class VisitorController {
 			mv.addObject("DATA", returnedVisitor);
 		}
 		mv.addObject("STATUS", visitor);
+		
 		mv.addObject("ERRORMESSAGE", errorMessage);
 		mv.setViewName("festival-portal.jsp");
+		System.out.println(returnedVisitor.getFirstName() + ", "  + returnedVisitor.getLastName());
 		return mv;
 	}
 	@RequestMapping("/updateDetails.htm")
@@ -85,8 +87,22 @@ public class VisitorController {
 		ModelAndView mv = new ModelAndView();
 
 		String username = request.getParameter("username");
+		String firstname = request.getParameter("firstName");
+		String lastname = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		String address = request.getParameter("address");
+		String password = request.getParameter("password");
+		String phonenumber = request.getParameter("phoneNumber");
+		
 		VisitorFacade service = new VisitorServiceImpl();
-		Visitor updatedVisitor = (Visitor) service.updateVisitorDetails(username);
+		Visitor visitor = new Visitor();
+		visitor.setAddress(address);
+		visitor.setFirstName(firstname);
+		visitor.setLastName(lastname);
+		visitor.setEmail(email);
+		visitor.setPhoneNumber(phonenumber);
+		visitor.setUserName(username);
+		Visitor updatedVisitor = service.updateVisitorDetails(visitor);
 		boolean success = false;
 		String errorMessage = "";
 		if (updatedVisitor!=null) {
@@ -95,11 +111,10 @@ public class VisitorController {
 		}
 		mv.addObject("STATUS", success);
 		mv.addObject("ERRORMESSAGE", errorMessage);
-<<<<<<< HEAD
 		mv.setViewName("festival-portal.jsp");		
-=======
-		mv.setViewName("festival-portal.jsp");
->>>>>>> 6b8259b06bdbca3039e255fa5208bd5328d9bdd6
+
+		System.out.println(updatedVisitor.getFirstName() + ", "  + updatedVisitor.getLastName());
+
 		return mv;
 	}
 }

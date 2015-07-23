@@ -53,6 +53,10 @@ function registrationValidation() {
 			valid = false;
 	}
 	
+	if(document.form.address.value.length ==0){
+		
+		document.form.address.value = "Not Provided";
+	}
 	if(!valid){
 	alert(error);
 	}
