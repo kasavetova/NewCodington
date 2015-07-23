@@ -32,7 +32,7 @@
 			<div class="input-field">
 				<label for="username">Username:</label> <input type="text"
 					name="username" value="<-- get value from the database-- >"
-					readonly>
+					>
 			</div>
 			<div class="input-field">
 				<label for="email">Email:</label> <input type="text" name="email"
