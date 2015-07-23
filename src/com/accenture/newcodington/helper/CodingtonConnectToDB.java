@@ -17,7 +17,7 @@ public class CodingtonConnectToDB {
 			SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection(
-				"jdbc:mysql://localhost/codingtondb", "root", "abcd1234");
+				"jdbc:mysql://localhost/festivaldatabase", "root", "abcd1234");
 		return connection;
 	}
 

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to the Festival Event Registration System</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="JavaScript/validation.js"></script>
+<script src="JavaScript/registerValidation.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -20,7 +20,7 @@
 			<p>* fields are required.</p>
 		</div>
 		
-		<form name="form" action="register.htm" method="post" onSubmit="return emptyValidation();">
+		<form name="form" action="register.htm" method="post" onSubmit="return registrationValidation();">
 			<div class="input-field">
 				<label for="firstName">First Name: *</label> <input type="text"
 					name="firstName" value="">

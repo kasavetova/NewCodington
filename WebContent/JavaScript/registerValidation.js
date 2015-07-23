@@ -1,10 +1,10 @@
 /**
  * 
- * Function that validates the form
+ * Function that validates the registration form
 
  * @returns {Boolean} if the form submitted is valid
  */
-function emptyValidation() {
+function registrationValidation() {
 	
 	var error = "Error(s): ";
 	var valid = true;
