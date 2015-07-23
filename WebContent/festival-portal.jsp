@@ -1,3 +1,4 @@
+<%@page import="com.accenture.newcodington.entity.Visitor"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,17 +23,19 @@
 
 	<h2 id="sub-heading">Festival Portal Page: Welcome @user to your
 		portal page.</h2>
+		
+	<% Visitor v = (Visitor) request.getAttribute("DATA"); %>
 
 	<div id="user-info">
 		<p>
 			Your personal information is below. To change your information, <a
 				href="updatepage.jsp">click here</a>
 		</p>
-		<p>Username: Bob</p>
-		<p>Visitor ID: 14</p>
-		<p>Email: bob@example.com</p>
-		<p>Phone No: 1234</p>
-		<p>Address: London</p>
+		<p>Username: <%= v.getUserName() %></p>
+		<p>Visitor ID: <%= v.getVisitorId() %></p>
+		<p>Email: <%= v.getEmail() %></p>
+		<p>Phone No: <%= v.getPhoneNumber() %></p>
+		<p>Address: <%= v.getAddress() %></p>
 	</div>
 
 
