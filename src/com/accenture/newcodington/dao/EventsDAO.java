@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.accenture.newcodington.entity.Event;
+import com.accenture.newcodington.entity.Visitor;
 import com.accenture.newcodington.helper.CodingtonConnectToDB;
 
 public class EventsDAO {
@@ -35,11 +36,11 @@ public class EventsDAO {
 			+ " where e.placeid=p.placeid "
 			+ " and t.theaterid=e.placemap "
 			+ " and t.theaterid='T001'";
-	
-	private static String stadiumEventsQry = "select e.eventname,e.description,e.duration,e.eventtype,e.schedule,e.ticketprice from event e,place p,stadium s " +
-			" where e.placeid=p.placeid " +
-			" and s.stadiumid=e.placemap " +
-			" and s.stadiumid='S001';";
+
+	private static String stadiumEventsQry = "select e.eventname,e.description,e.duration,e.eventtype,e.schedule,e.ticketprice from event e,place p,stadium s "
+			+ " where e.placeid=p.placeid "
+			+ " and s.stadiumid=e.placemap "
+			+ " and s.stadiumid='S001';";
 
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
 			SQLException {
@@ -155,4 +156,5 @@ public class EventsDAO {
 		CodingtonConnectToDB.closeConnection();
 		return eventList;
 	}
+
 }
