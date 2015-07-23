@@ -36,6 +36,11 @@ public class VisitorDAO {
 	public boolean insertData(Visitor visitor) throws ClassNotFoundException,
 			SQLException, Exception {
 		connection = CodingtonConnectToDB.createConnection();
+		statement=connection.prepareStatement(query.getGetIDByUsername());
+		statement.setString(1, visitor.getUserName());
+		resultSet = statement.executeQuery();
+		if(resultSet.next()) return false;		
+		
 		statement = connection.prepareStatement(query.getInsertData());
 		statement.setString(1, visitor.getUserName());
 		statement.setString(2, visitor.getPassword());
@@ -96,9 +101,15 @@ public class VisitorDAO {
 		statement=connection.prepareStatement(query.getGetIDByUsername());
 		statement.setString(1, visitor.getUserName());
 		resultSet = statement.executeQuery();
-		if(!resultSet.next()) return false;
+		if(!resultSet.next()) return false;		
+		int id = resultSet.getInt(1);	
 		
-		int id = resultSet.getInt(1);		 
+		statement=connection.prepareStatement(query.getCheckUserRegistered());
+		statement.setInt(1, id);
+		statement.setInt(2, eventid);
+		resultSet = statement.executeQuery();
+		if(resultSet.next()) return false;	
+		
 		statement = connection.prepareStatement(query.getRegisterVisitorToEvent());
 		statement.setInt(1, eventid);
 		statement.setInt(2, id);
@@ -153,7 +164,12 @@ public class VisitorDAO {
 
 	public Visitor updateVisitor(Visitor visitor)
 			throws ClassNotFoundException, SQLException {
-		connection = CodingtonConnectToDB.createConnection();		
+		connection = CodingtonConnectToDB.createConnection();
+		statement=connection.prepareStatement(query.getGetIDByUsername());
+		statement.setString(1, visitor.getUserName());
+		resultSet = statement.executeQuery();
+		if(resultSet.next()) return null;		
+		
 		statement = connection.prepareStatement(query.getUpdateVisitor());						
 		statement.setString(1, visitor.getFirstName());
 		statement.setString(2, visitor.getLastName());				
@@ -249,6 +265,12 @@ public class VisitorDAO {
 		resultSet = statement.executeQuery();
 		if(!resultSet.next()) return false;		
 		int id = resultSet.getInt(1);		
+		
+		statement=connection.prepareStatement(query.getCheckUserRegistered());
+		statement.setInt(1, id);
+		statement.setInt(2, eventid);
+		resultSet = statement.executeQuery();
+		if(!resultSet.next()) return false;
 		
 		statement = connection.prepareStatement(query.getUnregisterEvent());		
 		statement.setInt(1, id);

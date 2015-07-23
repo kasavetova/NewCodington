@@ -21,6 +21,7 @@
 		<property name="matchWithOldPwd" value="SELECT * FROM visitor WHERE username = ? AND password = ?"></property>
 		<property name="unregisterEvent" value="DELETE FROM eventsignup WHERE visitorid = ? AND eventid = ?"></property>
 		<property name="getIDByUsername" value="SELECT * FROM visitor WHERE username = ?"></property>		
+		<property name="checkUserRegistered" value="SELECT * FROM eventsignup WHERE visitorid = ? AND eventid = ?"></property>
 	</bean>	
 	
 </beans>
