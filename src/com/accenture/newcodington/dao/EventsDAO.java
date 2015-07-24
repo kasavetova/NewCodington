@@ -42,6 +42,8 @@ public class EventsDAO {
 			+ " and s.stadiumid=e.placemap "
 			+ " and s.stadiumid='S001';";
 
+	private static String allEventsQry = "select * from event";
+
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
 			SQLException {
 		connection = CodingtonConnectToDB.createConnection();
@@ -150,6 +152,29 @@ public class EventsDAO {
 			event.setEventType(resultSet.getString("eventtype"));
 			event.setSchedule(resultSet.getString("schedule"));
 			event.setTicketPrice(resultSet.getInt("ticketprice"));
+			eventList.add(event);
+		}
+		resultSet.close();
+		CodingtonConnectToDB.closeConnection();
+		return eventList;
+	}
+
+	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
+			SQLException {
+		connection = CodingtonConnectToDB.createConnection();
+		statement = connection.prepareStatement(allEventsQry);
+		resultSet = statement.executeQuery();
+		ArrayList<Event> eventList = new ArrayList<Event>();
+
+		while (resultSet.next()) {
+			Event event = new Event();
+			event.seteventId(resultSet.getInt("eventid"));
+			event.setEventName(resultSet.getString("name"));
+			event.setDescription(resultSet.getString("description"));
+			event.setDuration(resultSet.getInt("duration"));
+			event.setPlace(resultSet.getString("places"));
+			event.setEventType(resultSet.getString("eventtype"));
+			event.setSeatsSavailable(resultSet.getInt("seatsavailable"));
 			eventList.add(event);
 		}
 		resultSet.close();
