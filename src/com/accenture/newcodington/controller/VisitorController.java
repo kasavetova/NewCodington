@@ -114,7 +114,7 @@ public class VisitorController {
 	@RequestMapping("/updateDetails.htm")
 	public ModelAndView updateVisitor(HttpServletRequest request,
 			HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv =  new EventController().getAvailableEvents(request, response);
 		boolean success = false;
 		String errorMessage = "";
 		HttpSession session = request.getSession();
@@ -163,7 +163,7 @@ public class VisitorController {
 	@RequestMapping("/event-register.htm")
 	public ModelAndView registerForEvent(HttpServletRequest request,
 			HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv =  new EventController().getAvailableEvents(request, response);
 		mv.setViewName("festival-portal.jsp");
 
 		String username = request.getParameter("username");
@@ -200,7 +200,7 @@ public class VisitorController {
 	@RequestMapping("/event-unregister.htm")
 	public ModelAndView unregisterForEvent(HttpServletRequest request,
 			HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv =  new EventController().getAvailableEvents(request, response);
 		mv.setViewName("festival-portal.jsp");
 
 		String username = request.getParameter("username");

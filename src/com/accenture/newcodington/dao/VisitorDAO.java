@@ -173,7 +173,7 @@ public class VisitorDAO {
 		statement = connection.prepareStatement(query.getGetIDByUsername());
 		statement.setString(1, visitor.getUserName());
 		resultSet = statement.executeQuery();
-		if (resultSet.next())
+		if (!resultSet.next())
 			return null;
 
 		statement = connection.prepareStatement(query.getUpdateVisitor());
@@ -201,6 +201,7 @@ public class VisitorDAO {
 			visitor.setEmail(resultSet.getString(6));
 			visitor.setPhoneNumber(resultSet.getString(7));
 			visitor.setAddress(resultSet.getString(8));
+			visitor.setUserName(resultSet.getString("username"));
 
 			log.info("Updated visitor details in Database for Visitor ID :"
 					+ visitor.getVisitorId());
