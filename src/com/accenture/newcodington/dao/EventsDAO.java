@@ -42,7 +42,7 @@ public class EventsDAO {
 			+ " and s.stadiumid=e.placemap "
 			+ " and s.stadiumid='S001';";
 
-	private static String allEventsQry = "select * from event";
+	private static String allEventsQry = "select * from event WHERE seatsavailable > 0";
 
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
 			SQLException {
