@@ -14,7 +14,7 @@
 		<property name="deleteEvent" value="UPDATE EVENT SET SEATSAVAILABLE = SEATSAVAILABLE + 1 WHERE EVENTID=?"></property>
 		<property name="insertData" value="INSERT INTO visitor(username, password, firstname, lastname, email, phonenumber, address) VALUES(?, ?, ?, ?, ?, ?, ?)"></property>
 		<property name="searchUser" value="SELECT * FROM visitor WHERE username = ? AND password = ?"></property>
-		<property name="registerVisitorToEvent" value="INSERT INTO eventsignup VALUES(?, ?)"></property>
+		<property name="registerVisitorToEvent" value="INSERT INTO eventsignup(eventid, visitorid) VALUES(?, ?)"></property>
 		<property name="registeredEvents" value="SELECT * FROM event e JOIN eventsignup es ON e.eventid = es.eventid WHERE es.visitorid = ?"></property>
 		<property name="updateVisitor" value="UPDATE visitor SET firstname = ?, lastname = ?, email = ?, phonenumber = ?, address = ? WHERE username = ?"></property>
 		<property name="changePassword" value="UPDATE visitor SET password = ? WHERE username = ?"></property>
