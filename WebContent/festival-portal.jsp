@@ -1,3 +1,5 @@
+<%@page import="com.accenture.newcodington.entity.Event"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.accenture.newcodington.entity.Visitor"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -20,13 +22,16 @@
 			<li><a href="">About</a></li>
 		</ul>
 	</div>
-	
+
 	<%
 		Visitor v = (Visitor) request.getAttribute("DATA");
 	%>
 
-	<h2 id="sub-heading">Festival Portal Page: Welcome <%= v.getFirstName() %> to your
-		portal page.</h2>
+	<h2 id="sub-heading">
+		Festival Portal Page: Welcome
+		<%=v.getFirstName()%>
+		to your portal page.
+	</h2>
 
 	<div id="user-info">
 		<p>
@@ -45,11 +50,13 @@
 		<p>
 			Phone No:
 			<%=v.getPhoneNumber()%></p>
-			
-			<% if(v.getAddress() == null) {
+
+		<%
+			if (v.getAddress() == null) {
 				v.setAddress("Not specified");
-			} %>
-			
+			}
+		%>
+
 		<p>
 			Address:
 			<%=v.getAddress()%></p>
@@ -84,6 +91,11 @@
 
 	<hr />
 
+	<%
+		ArrayList<Event> eventList = (ArrayList<Event>) request
+				.getAttribute("allEvents");
+	%>
+
 	<div id="available-events">
 		<table>
 			<tr>
@@ -95,15 +107,24 @@
 				<th>Event Type</th>
 				<th>Available Tickets</th>
 			</tr>
+
+			<%
+				for (Event event : eventList) {
+			%>
+
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><%=event.geteventId()%></td>
+				<td><%=event.getEventName()%></td>
+				<td><%=event.getDescription()%></td>
+				<td><%=event.getPlace()%></td>
+				<td><%=event.getDuration()%></td>
+				<td><%=event.getEventType()%></td>
+				<td><%=event.getSeatsSavailable()%><form method="post" action="event-register.htm"><input type="hidden" name="eventId" value="<%= event.geteventId() %>"><input type="hidden" name="username" value="<%= session.getAttribute("USERNAME")%>"><input type="submit" name="Regsiter" value="Register"></form></td>
 			</tr>
+
+			<%
+				}
+			%>
 		</table>
 	</div>
 
