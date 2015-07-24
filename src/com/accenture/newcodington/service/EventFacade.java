@@ -15,5 +15,6 @@ public interface EventFacade {
 	public ArrayList<Event> getAllParkEvents();
 	public ArrayList<Event> getAllTheaterEvents();
 	public ArrayList<Event> getAllStadiumEvents();
+	public ArrayList<Event> getAllEvents();
 	public boolean checkEventsForVisitor(Visitor visitor, int eventid);
 }

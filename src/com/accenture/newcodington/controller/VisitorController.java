@@ -116,8 +116,8 @@ public class VisitorController {
 		ModelAndView mv = new ModelAndView();
 		boolean success = false;
 		String errorMessage = "";
-
-		String username = request.getParameter("username");
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("USERNAME");		
 		String password = request.getParameter("password");
 		if (username == null || username.length() < 1 || password == null
 				|| password.length() < 1) {

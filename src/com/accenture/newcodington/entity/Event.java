@@ -14,7 +14,14 @@ public class Event {
 	private int eventId;
 	private String place;
 	private int signupId;
+	private int seatsSavailable;
 	
+	public int getSeatsSavailable() {
+		return seatsSavailable;
+	}
+	public void setSeatsSavailable(int seatsSavailable) {
+		this.seatsSavailable = seatsSavailable;
+	}
 	// GETTER and SETTER methods for EVENT class
 	public String getEventName() {
 		return eventName;

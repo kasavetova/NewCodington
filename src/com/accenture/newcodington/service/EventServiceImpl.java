@@ -82,6 +82,19 @@ public class EventServiceImpl implements EventFacade {
 		return showStadiumEvents;
 	}
 	
+	public ArrayList<Event> getAllEvents() {
+		EventsDAO dao = new EventsDAO();
+		ArrayList<Event> showAllEvents = new ArrayList<Event>();
+		try {
+			showAllEvents = dao.showAllEvents();
+		} catch (ClassNotFoundException exception) {
+			System.out.println(exception.getMessage());
+		} catch (SQLException exception) {
+			System.out.println(exception.getMessage());
+		}
+		return showAllEvents;
+	}
+	
 	public boolean checkEventsForVisitor(Visitor visitor, int eventid) {
 		VisitorDAO dao = new VisitorDAO();
 		boolean isRegistered = false;
