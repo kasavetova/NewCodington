@@ -97,8 +97,9 @@ public class VisitorController {
 
 		if (returnedVisitor != null && returnedVisitor.getUserName() != null
 				&& returnedVisitor.getUserName().length() > 0) {
-			success = true;
-			mv.addObject("DATA", returnedVisitor);
+			success = true;		
+			mv =  new EventController().getAvailableEvents(request, response);
+			mv.addObject("DATA", returnedVisitor);			
 			mv.setViewName("festival-portal.jsp");
 		} else {
 			mv.setViewName("login.jsp");

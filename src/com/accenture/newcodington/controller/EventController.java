@@ -19,7 +19,7 @@ public class EventController {
 	
 	@RequestMapping("/events.htm")
 	public ModelAndView getAvailableEvents(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response) {
 		
 		
 		List<Event> eventList=new ArrayList<Event>();
