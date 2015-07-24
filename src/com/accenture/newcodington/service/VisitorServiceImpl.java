@@ -69,7 +69,7 @@ public class VisitorServiceImpl implements VisitorFacade {
 		EventsDAO eventDAO = new EventsDAO();
 		Boolean isCreated = false;
 		try {
-			visitorDAO.registerVisitorToEvent(v, eventID);
+			isCreated = visitorDAO.registerVisitorToEvent(v, eventID);
 			//eventDAO.updateEventNominations(v, eventID);
 			return isCreated;
 		} catch (SQLException e) {
@@ -121,13 +121,13 @@ public class VisitorServiceImpl implements VisitorFacade {
 			return null;
 		}
 	}
-	/*@Override
-	public Object unregisterVisitor(Visitor v, int eventID) {
+	@Override
+	public Object unregisterVisitorForEvent(Visitor v, int eventID) {
 		VisitorDAO visitorDAO = new VisitorDAO();
 		EventsDAO eventDAO = new EventsDAO();
 		Boolean isCreated = false;
 		try {
-			visitorDAO.registerVisitorToEvent(v, eventID);
+			isCreated = visitorDAO.unregisterEvent(v, eventID);
 			//eventDAO.updateEventNominations(v, eventID);
 			return isCreated;
 		} catch (SQLException e) {
@@ -140,5 +140,5 @@ public class VisitorServiceImpl implements VisitorFacade {
 			log.info("Exception is: " + e.getMessage());
 			return null;
 		}
-	}*/
+	}
 }

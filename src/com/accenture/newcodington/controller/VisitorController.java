@@ -159,34 +159,76 @@ public class VisitorController {
 		return mv;
 	}
 
-	@RequestMapping("/festival-portal.htm")
+	@RequestMapping("/event-register.htm")
 	public ModelAndView registerForEvent(HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("festival-portal.jsp");
 
-		String username = request.getParameter("userName");
-		if (username==null||request.getParameter("eventId")==null ||username.length()<1 || request.getParameter("eventId").length()<1) {
-			mv.addObject("ERRORMESSAGE", "invalid username or eventID");
-			mv.setViewName("festival-portal.jsp");
+		String username = request.getParameter("username");
+		if (username == null || request.getParameter("eventId") == null
+				|| username.length() < 1
+				|| request.getParameter("eventId").length() < 1) {
+			mv.addObject("ERRORMESSAGE", "Invalid username or eventID");
 			return mv;
 		}
 		int eventID = Integer.valueOf(request.getParameter("eventId"));
-		
+
 		Visitor visitor = new Visitor();
 		visitor.setUserName(username);
-						
+
 		EventFacade eventService = new EventServiceImpl();
-		boolean isRegistered =  eventService.checkEventsForVisitor(visitor, eventID);
+		boolean isRegistered = eventService.checkEventsForVisitor(visitor,
+				eventID);
 		if (isRegistered) {
 			mv.addObject("STATUS", false);
-			mv.addObject("ERRORMESSAGE", "Already registered");
+			mv.addObject("ERRORMESSAGE",
+					"You have already registered for this event");
 			return mv;
-		} 
+		}
 		VisitorFacade visitorService = new VisitorServiceImpl();
-		isRegistered = (Boolean) visitorService.registerVisitorForEvent(visitor, eventID);
-		mv.setViewName("festival-portal.jsp");
+		isRegistered = (Boolean) visitorService.registerVisitorForEvent(
+				visitor, eventID);
+
 		mv.addObject("STATUS", isRegistered);
 		System.out.println(isRegistered + ", ");
 		return mv;
+
+	}
+
+	@RequestMapping("/event-unregister.htm")
+	public ModelAndView unregisterForEvent(HttpServletRequest request,
+			HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("festival-portal.jsp");
+
+		String username = request.getParameter("username");
+		if (username == null || request.getParameter("eventId") == null
+				|| username.length() < 1
+				|| request.getParameter("eventId").length() < 1) {
+			mv.addObject("ERRORMESSAGE", "Invalid username or eventID");
+			return mv;
+		}
+		int eventID = Integer.valueOf(request.getParameter("eventId"));
+
+		Visitor visitor = new Visitor();
+		visitor.setUserName(username);
+
+		EventFacade eventService = new EventServiceImpl();
+		boolean isRegistered = eventService.checkEventsForVisitor(visitor,
+				eventID);
+		if (isRegistered) {
+			mv.addObject("STATUS", false);
+			mv.addObject("ERRORMESSAGE",
+					"You have already registered for this event");
+			return mv;
+		}
+		VisitorFacade visitorService = new VisitorServiceImpl();
+		isRegistered = (Boolean) visitorService.unregisterVisitorForEvent(visitor, eventID);
+
+		mv.addObject("STATUS", isRegistered);
+		System.out.println(isRegistered + ", ");
+		return mv;
+
 	}
 }
