@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ctx="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd ">
+	
+	<bean id="SqlBean" class="com.accenture.newcodington.helper.DbQuery">
+		<property name="searchEvent" value="SELECT * FROM EVENT"></property>
+		<property name="updateEvent" value="UPDATE EVENT SET SEATSAVAILABLE = SEATSAVAILABLE - 1 WHERE EVENTID=?"></property>
+		<property name="viewEvent" value="SELECT COUNT(*) AS EVENTCOUNT FROM EVENTSIGNUP WHERE EVENTID=? AND VISITORID=?"></property>
+		<property name="deleteEvent" value="UPDATE EVENT SET SEATSAVAILABLE = SEATSAVAILABLE + 1 WHERE EVENTID=?"></property>
+		<property name="insertData" value="INSERT INTO visitor(username, password, firstname, lastname, email, phonenumber, address) VALUES(?, ?, ?, ?, ?, ?, ?)"></property>
+		<property name="searchUser" value="SELECT * FROM visitor WHERE username = ? AND password = ?"></property>
+		<property name="registerVisitorToEvent" value="INSERT INTO eventsignup(eventid, visitorid) VALUES(?, ?)"></property>
+		<property name="registeredEvents" value="SELECT * FROM event e JOIN eventsignup es ON e.eventid = es.eventid WHERE es.visitorid = ?"></property>
+		<property name="updateVisitor" value="UPDATE visitor SET firstname = ?, lastname = ?, email = ?, phonenumber = ?, address = ? WHERE username = ?"></property>
+		<property name="changePassword" value="UPDATE visitor SET password = ? WHERE username = ?"></property>
+		<property name="matchWithOldPwd" value="SELECT * FROM visitor WHERE username = ? AND password = ?"></property>
+		<property name="unregisterEvent" value="DELETE FROM eventsignup WHERE visitorid = ? AND eventid = ?"></property>
+		<property name="getIDByUsername" value="SELECT * FROM visitor WHERE username = ?"></property>		
+		<property name="checkUserRegistered" value="SELECT * FROM eventsignup WHERE visitorid = ? AND eventid = ?"></property>
+	</bean>	
+	
+</beans>

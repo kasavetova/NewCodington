@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.accenture.newcodington.entity.Event;
+import com.accenture.newcodington.entity.Visitor;
 import com.accenture.newcodington.helper.CodingtonConnectToDB;
 
 public class EventsDAO {
@@ -35,11 +36,13 @@ public class EventsDAO {
 			+ " where e.placeid=p.placeid "
 			+ " and t.theaterid=e.placemap "
 			+ " and t.theaterid='T001'";
-	
-	private static String stadiumEventsQry = "select e.eventname,e.description,e.duration,e.eventtype,e.schedule,e.ticketprice from event e,place p,stadium s " +
-			" where e.placeid=p.placeid " +
-			" and s.stadiumid=e.placemap " +
-			" and s.stadiumid='S001';";
+
+	private static String stadiumEventsQry = "select e.eventname,e.description,e.duration,e.eventtype,e.schedule,e.ticketprice from event e,place p,stadium s "
+			+ " where e.placeid=p.placeid "
+			+ " and s.stadiumid=e.placemap "
+			+ " and s.stadiumid='S001';";
+
+	private static String allEventsQry = "select * from event WHERE seatsavailable > 0";
 
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
 			SQLException {
@@ -155,4 +158,28 @@ public class EventsDAO {
 		CodingtonConnectToDB.closeConnection();
 		return eventList;
 	}
+
+	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
+			SQLException {
+		connection = CodingtonConnectToDB.createConnection();
+		statement = connection.prepareStatement(allEventsQry);
+		resultSet = statement.executeQuery();
+		ArrayList<Event> eventList = new ArrayList<Event>();
+
+		while (resultSet.next()) {
+			Event event = new Event();
+			event.seteventId(resultSet.getInt("eventid"));
+			event.setEventName(resultSet.getString("name"));
+			event.setDescription(resultSet.getString("description"));
+			event.setDuration(resultSet.getInt("duration"));
+			event.setPlace(resultSet.getString("places"));
+			event.setEventType(resultSet.getString("eventtype"));
+			event.setSeatsSavailable(resultSet.getInt("seatsavailable"));
+			eventList.add(event);
+		}
+		resultSet.close();
+		CodingtonConnectToDB.closeConnection();
+		return eventList;
+	}
+
 }
